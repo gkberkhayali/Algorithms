@@ -1,4 +1,5 @@
-﻿using static AlgorithmsLibrary.Enumaration;
+﻿using System.ComponentModel.DataAnnotations;
+using static AlgorithmsLibrary.Enumaration;
 
 namespace AlgorithmsLibrary
 {
@@ -115,6 +116,39 @@ namespace AlgorithmsLibrary
 
         }
       
+        public bool TestIsStringAnagram(string a , string b)
+        {
+            if(string.Equals(a,b))
+            {
+                return true;
+            }
+
+            if(string.IsNullOrEmpty(a) || string.IsNullOrEmpty(b))
+            {
+                return false;
+            }
+
+            var array1 = a.ToArray();
+            var array2 = b.ToArray();
+
+            if(array1 != null && array1.Length != 0)
+            {
+                Array.Sort(array1);
+            }
+
+            if (array2 != null && array2.Length != 0)
+            {
+                Array.Sort(array2);
+            }
+
+            return array1.SequenceEqual(array2);
+
+        }
+
+        public bool TestIntArrayEqual(int[] a, int[] b)
+        {
+            return a.SequenceEqual(b);
+        }
     }
 }
 
